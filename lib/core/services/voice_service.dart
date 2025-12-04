@@ -77,8 +77,10 @@ class VoiceService {
   // Set language for speech recognition
   static Future<void> setLanguage(String languageCode) async {
     try {
-      await _speechToText.setLanguage(languageCode);
+      // Set language for text-to-speech
       await _tts.setLanguage(languageCode);
+      // Note: speech_to_text language is set during initialization,
+      // cannot be changed dynamically via setLanguage method
     } catch (e) {
       rethrow;
     }
