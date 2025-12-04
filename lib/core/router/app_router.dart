@@ -236,6 +236,7 @@ class _ScanScreenState extends State<ScanScreen> {
   }
 }
 
+// Placeholder screens - using imported feature screens instead
 class ScanResultScreen extends StatelessWidget {
   final Map<String, dynamic> scanData;
 
@@ -245,51 +246,18 @@ class ScanResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Scan Results')),
-      body: const Center(child: Text('Scan Result Screen')),
-    );
-  }
-}
-
-class ScanHistoryScreen extends StatefulWidget {
-  const ScanHistoryScreen({Key? key}) : super(key: key);
-
-  @override
-  State<ScanHistoryScreen> createState() => _ScanHistoryScreenState();
-}
-
-class _ScanHistoryScreenState extends State<ScanHistoryScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Scan History')),
-      body: const Center(child: Text('Scan History Screen')),
-    );
-  }
-}
-
-class FarmerProfileScreen extends StatefulWidget {
-  const FarmerProfileScreen({Key? key}) : super(key: key);
-
-  @override
-  State<FarmerProfileScreen> createState() => _FarmerProfileScreenState();
-}
-
-class _FarmerProfileScreenState extends State<FarmerProfileScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Farmer Profile'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRouter.editProfile);
-            },
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Disease: ${scanData['disease'] ?? 'Unknown'}'),
+            const SizedBox(height: 16),
+            Text('Confidence: ${scanData['confidence'] ?? '0'}%'),
+            const SizedBox(height: 16),
+            Text('Treatment: ${scanData['treatment'] ?? 'N/A'}'),
+          ],
+        ),
       ),
-      body: const Center(child: Text('Farmer Profile Screen')),
     );
   }
 }
@@ -302,62 +270,57 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  final _nameController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _farmSizeController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _phoneController.dispose();
+    _farmSizeController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Edit Profile')),
-      body: const Center(child: Text('Edit Profile Screen')),
-    );
-  }
-}
-
-class CropCalendarScreen extends StatefulWidget {
-  const CropCalendarScreen({Key? key}) : super(key: key);
-
-  @override
-  State<CropCalendarScreen> createState() => _CropCalendarScreenState();
-}
-
-class _CropCalendarScreenState extends State<CropCalendarScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Crop Calendar')),
-      body: const Center(child: Text('Crop Calendar Screen')),
-    );
-  }
-}
-
-class EducationScreen extends StatefulWidget {
-  const EducationScreen({Key? key}) : super(key: key);
-
-  @override
-  State<EducationScreen> createState() => _EducationScreenState();
-}
-
-class _EducationScreenState extends State<EducationScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Education & Training')),
-      body: const Center(child: Text('Education Screen')),
-    );
-  }
-}
-
-class VoiceModeScreen extends StatefulWidget {
-  const VoiceModeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<VoiceModeScreen> createState() => _VoiceModeScreenState();
-}
-
-class _VoiceModeScreenState extends State<VoiceModeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Voice Mode')),
-      body: const Center(child: Text('Voice Mode Screen')),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          TextField(
+            controller: _nameController,
+            decoration: const InputDecoration(
+              labelText: 'Name',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _phoneController,
+            decoration: const InputDecoration(
+              labelText: 'Phone',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _farmSizeController,
+            decoration: const InputDecoration(
+              labelText: 'Farm Size (acres)',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Save Changes'),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -374,7 +337,41 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: const Center(child: Text('Settings Screen')),
+      body: ListView(
+        children: [
+          ListTile(
+            title: const Text('Language'),
+            trailing: DropdownButton<String>(
+              value: 'en',
+              items: const [
+                DropdownMenuItem(value: 'en', child: Text('English')),
+                DropdownMenuItem(value: 'sw', child: Text('Kiswahili')),
+              ],
+              onChanged: (value) {
+                // Handle language change
+              },
+            ),
+          ),
+          ListTile(
+            title: const Text('Dark Mode'),
+            trailing: Switch(
+              value: false,
+              onChanged: (value) {
+                // Handle dark mode toggle
+              },
+            ),
+          ),
+          ListTile(
+            title: const Text('Notifications'),
+            trailing: Switch(
+              value: true,
+              onChanged: (value) {
+                // Handle notifications toggle
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

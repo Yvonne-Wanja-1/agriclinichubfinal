@@ -92,7 +92,9 @@ class FirebaseService {
   }
 
   // Retrieve scan history
-  static Future<List<Map<String, dynamic>>> getScanHistory(String userId) async {
+  static Future<List<Map<String, dynamic>>> getScanHistory(
+    String userId,
+  ) async {
     try {
       final snapshots = await _firestore
           .collection('farmers')
@@ -105,6 +107,7 @@ class FirebaseService {
       rethrow;
     }
   }
+
   // Upload image to Firebase Storage
   static Future<String> uploadImage({
     required String userId,
@@ -119,7 +122,6 @@ class FirebaseService {
       rethrow;
     }
   }
-  }
 
   // Stream for real-time updates
   static Stream<QuerySnapshot> getScanHistoryStream(String userId) {
@@ -130,4 +132,4 @@ class FirebaseService {
         .orderBy('date', descending: true)
         .snapshots();
   }
-
+}
