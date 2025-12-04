@@ -10,13 +10,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    const HomeContent(),
-    const SizedBox(),
-    const SizedBox(),
-    const SizedBox(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
