@@ -4,7 +4,7 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 class VoiceService {
   static final _tts = FlutterTts();
   static final _speechToText = stt.SpeechToText();
-  
+
   // Initialize text-to-speech
   static Future<void> initializeTTS() async {
     await _tts.setLanguage("en-US");

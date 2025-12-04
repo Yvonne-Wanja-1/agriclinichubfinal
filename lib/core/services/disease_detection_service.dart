@@ -16,7 +16,9 @@ class DiseaseDetectionService {
   }
 
   // Detect diseases in image
-  static Future<Map<String, dynamic>> detectDiseases(Uint8List imageBytes) async {
+  static Future<Map<String, dynamic>> detectDiseases(
+    Uint8List imageBytes,
+  ) async {
     try {
       // Run inference on the image
       // final results = await Tflite.runModelOnImage(
@@ -66,11 +68,7 @@ class DiseaseDetectionService {
           'Remove infected leaves',
           'Improve air circulation',
         ],
-        'prevention': [
-          'Avoid overhead watering',
-          'Mulch soil',
-          'Rotate crops',
-        ],
+        'prevention': ['Avoid overhead watering', 'Mulch soil', 'Rotate crops'],
         'estimatedRecovery': '14-21 days',
       },
       'Leaf Spot': {
@@ -101,11 +99,12 @@ class DiseaseDetectionService {
       },
     };
 
-    return treatments[diseaseName] ?? {
-      'treatment': ['Consult expert'],
-      'prevention': ['Maintain plant health'],
-      'estimatedRecovery': 'Unknown',
-    };
+    return treatments[diseaseName] ??
+        {
+          'treatment': ['Consult expert'],
+          'prevention': ['Maintain plant health'],
+          'estimatedRecovery': 'Unknown',
+        };
   }
 
   // Analyze multiple diseases in one scan
@@ -115,14 +114,12 @@ class DiseaseDetectionService {
     try {
       // Run object detection to identify all visible diseases
       final results = await detectDiseases(imageBytes);
-      final diseases = (results['diseases'] as List).cast<Map<String, dynamic>>();
-      
+      final diseases = (results['diseases'] as List)
+          .cast<Map<String, dynamic>>();
+
       return diseases.map((disease) {
         final recommendations = getTreatmentRecommendations(disease['name']);
-        return {
-          ...disease,
-          ...recommendations,
-        };
+        return {...disease, ...recommendations};
       }).toList();
     } catch (e) {
       rethrow;
