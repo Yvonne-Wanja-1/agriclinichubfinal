@@ -26,10 +26,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Crop Calendar'),
-        elevation: 0,
-      ),
+      appBar: AppBar(title: const Text('Crop Calendar'), elevation: 0),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -45,8 +42,10 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> {
               DropdownButtonFormField<String>(
                 value: selectedCounty,
                 items: kenyaCounties
-                    .map((county) =>
-                        DropdownMenuItem(value: county, child: Text(county)))
+                    .map(
+                      (county) =>
+                          DropdownMenuItem(value: county, child: Text(county)),
+                    )
                     .toList(),
                 onChanged: (value) {
                   setState(() => selectedCounty = value);
@@ -131,13 +130,15 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> {
             children: [
               Text(
                 crop,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.green.shade200,
                   borderRadius: BorderRadius.circular(20),
@@ -189,10 +190,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> {
             ],
           ),
           const SizedBox(height: 12),
-          Text(
-            'Tips',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+          Text('Tips', style: Theme.of(context).textTheme.bodySmall),
           const SizedBox(height: 8),
           ...tips
               .map(

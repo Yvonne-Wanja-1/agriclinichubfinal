@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/auth/presentation/screens/signup_screen.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/disease_detection/presentation/screens/scan_screen.dart';
+import '../../features/scan_history/presentation/screens/scan_history_screen.dart';
+import '../../features/farmer_profile/presentation/screens/farmer_profile_screen.dart';
+import '../../features/crop_calendar/presentation/screens/crop_calendar_screen.dart';
+import '../../features/education/presentation/screens/education_screen.dart';
+import '../../features/voice_mode/presentation/screens/voice_mode_screen.dart';
 
 class AppRouter {
   static const String splash = '/';
