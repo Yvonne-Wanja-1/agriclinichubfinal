@@ -91,9 +91,7 @@ class FirebaseService {
   }
 
   // Retrieve scan history
-  static Future<List<Map<String, dynamic>>> getScanHistory(
-    String userId,
-  ) async {
+  static Future<List<Map<String, dynamic>>> getScanHistory(String userId) async {
     try {
       final snapshots = await _firestore
           .collection('farmers')
