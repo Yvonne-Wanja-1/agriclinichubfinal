@@ -26,38 +26,38 @@ class AppRouter {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case splash:
+      case AppRouter.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-      case login:
+      case AppRouter.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case signup:
+      case AppRouter.signup:
         return MaterialPageRoute(builder: (_) => const SignupScreen());
-      case home:
+      case AppRouter.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case scan:
+      case AppRouter.scan:
         return MaterialPageRoute(builder: (_) => const ScanScreen());
-      case scanResult:
+      case AppRouter.scanResult:
         final args = settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
           builder: (_) => ScanResultScreen(scanData: args?['scanData'] ?? {}),
         );
-      case history:
+      case AppRouter.history:
         return MaterialPageRoute(builder: (_) => const ScanHistoryScreen());
-      case profile:
+      case AppRouter.profile:
         return MaterialPageRoute(builder: (_) => const FarmerProfileScreen());
-      case editProfile:
+      case AppRouter.editProfile:
         return MaterialPageRoute(builder: (_) => const EditProfileScreen());
-      case cropCalendar:
+      case AppRouter.cropCalendar:
         return MaterialPageRoute(builder: (_) => const CropCalendarScreen());
-      case education:
+      case AppRouter.education:
         return MaterialPageRoute(builder: (_) => const EducationScreen());
-      case voiceMode:
+      case AppRouter.voiceMode:
         return MaterialPageRoute(builder: (_) => const VoiceModeScreen());
-      case settings:
+      case AppRouter.settings:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       default:
         return MaterialPageRoute(
-          builder: (_) => const Scaffold(
+          builder: (_) => Scaffold(
             body: Center(child: Text('No route defined for ${settings.name}')),
           ),
         );

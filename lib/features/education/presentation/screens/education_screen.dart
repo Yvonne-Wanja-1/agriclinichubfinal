@@ -147,8 +147,8 @@ class _EducationScreenState extends State<EducationScreen>
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade300),
             borderRadius: BorderRadius.circular(12),
-            overflow: Overflow.hidden,
           ),
+          clipBehavior: Clip.hardEdge,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
