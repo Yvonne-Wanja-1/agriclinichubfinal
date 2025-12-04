@@ -46,9 +46,9 @@ dependencies:
   camera: ^0.10.5+2
   image: ^4.0.17
   
-  # ML & AI
-  tflite_flutter: ^0.10.4
-  tflite_flutter_helper: ^0.0.6
+  # ML & AI - TensorFlow Lite for disease detection
+  # Note: tflite_flutter requires manual setup for Android/iOS
+  # tflite_flutter: ^0.10.4
   
   # Local Storage & Database
   sqflite: ^2.2.8
@@ -66,7 +66,7 @@ dependencies:
   
   # Voice & Audio
   speech_to_text: ^6.1.1
-  flutter_tts: ^8.0.2
+  flutter_tts: ^0.0.1
   
   # Networking & HTTP
   http: ^1.1.0
