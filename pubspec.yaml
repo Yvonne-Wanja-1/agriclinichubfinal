@@ -32,56 +32,56 @@ dependencies:
     sdk: flutter
   
   # Firebase & Authentication
-  firebase_auth: ^6.1.2
-  firebase_core: ^4.2.1
-  firebase_storage: ^11.7.0
-  cloud_firestore: ^5.3.0
+  firebase_auth: ^4.10.0
+  firebase_core: ^2.21.0
+  firebase_storage: ^11.2.0
+  cloud_firestore: ^4.13.0
 
   # UI & Design
   cupertino_icons: ^1.0.8
   material_design_icons_flutter: ^7.0.7296
   
   # Image handling & Camera
-  image_picker: ^1.0.7
-  camera: ^0.10.5+9
-  image: ^4.1.3
+  image_picker: ^0.8.9
+  camera: ^0.10.5+2
+  image: ^4.0.17
   
-  # ML & AI
-  tflite_flutter: ^0.10.4
-  tflite_flutter_helper: ^0.0.6
+  # ML & AI - TensorFlow Lite for disease detection
+  # Note: tflite_flutter requires manual setup for Android/iOS
+  # tflite_flutter: ^0.10.4
   
   # Local Storage & Database
-  sqflite: ^2.3.0
-  path_provider: ^2.1.1
+  sqflite: ^2.2.8
+  path_provider: ^2.0.15
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   
   # State Management
-  provider: ^6.1.0
+  provider: ^6.0.5
   
   # Localization
-  intl: ^0.19.0
+  intl: ^0.18.1
   flutter_localizations:
     sdk: flutter
   
   # Voice & Audio
-  speech_to_text: ^6.6.2
-  flutter_tts: ^8.2.0
+  speech_to_text: ^6.1.1
+  flutter_tts: ^0.0.1
   
   # Networking & HTTP
   http: ^1.1.0
-  connectivity_plus: ^5.0.2
+  connectivity_plus: ^4.0.1
   
   # Utilities
   uuid: ^4.0.0
   json_annotation: ^4.8.1
   
   # Notifications
-  flutter_local_notifications: ^17.0.0
+  flutter_local_notifications: ^16.0.0
   
   # PDF & Document handling
-  pdf: ^3.10.3
-  printing: ^5.11.0
+  pdf: ^3.10.4
+  printing: ^5.10.0
 
 dev_dependencies:
   flutter_test:
