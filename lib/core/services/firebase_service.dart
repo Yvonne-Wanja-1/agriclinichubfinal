@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -104,7 +105,6 @@ class FirebaseService {
       rethrow;
     }
   }
-
   // Upload image to Firebase Storage
   static Future<String> uploadImage({
     required String userId,
@@ -113,11 +113,12 @@ class FirebaseService {
   }) async {
     try {
       final ref = _storage.ref().child('farmers/$userId/scans/$fileName');
-      await ref.putData(fileBytes);
+      await ref.putData(Uint8List.fromList(fileBytes));
       return await ref.getDownloadURL();
     } catch (e) {
       rethrow;
     }
+  }
   }
 
   // Stream for real-time updates
@@ -129,4 +130,4 @@ class FirebaseService {
         .orderBy('date', descending: true)
         .snapshots();
   }
-}
+
