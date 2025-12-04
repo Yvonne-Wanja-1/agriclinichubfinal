@@ -60,13 +60,13 @@ dependencies:
   provider: ^6.0.5
   
   # Localization
-  intl: ^0.18.1
+  intl: ^0.20.0
   flutter_localizations:
     sdk: flutter
   
   # Voice & Audio
   speech_to_text: ^6.1.1
-  flutter_tts: ^0.0.1
+  flutter_tts: ^4.2.3
   
   # Networking & HTTP
   http: ^1.1.0
